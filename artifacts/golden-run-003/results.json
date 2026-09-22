@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "seacs-reliability-demo/0.1",
+  "generatedFrom": "deterministic-public-harness",
+  "seed": 3003,
+  "runCount": 8,
+  "passedCount": 8,
+  "failedOpenCount": 0,
+  "limitations": [
+    "synthetic fixtures only",
+    "no production telemetry",
+    "no real LLM calls",
+    "no external actuators or side effects",
+    "private scoring formulas and Vizer integration excluded"
+  ],
+  "runs": [
+    {
+      "runId": "gr003-public-01",
+      "seed": 3003,
+      "scenario": "NORMAL",
+      "severity": "INFO",
+      "evidenceState": "SUFFICIENT",
+      "disposition": "ALLOW",
+      "outcome": "SUCCESS",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    },
+    {
+      "runId": "gr003-public-02",
+      "seed": 3003,
+      "scenario": "TOOL_TIMEOUT",
+      "severity": "HIGH",
+      "evidenceState": "MISSING",
+      "disposition": "SAFE_HOLD",
+      "outcome": "CONTAINED",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    },
+    {
+      "runId": "gr003-public-03",
+      "seed": 3003,
+      "scenario": "MALFORMED_RESPONSE",
+      "severity": "HIGH",
+      "evidenceState": "MALFORMED",
+      "disposition": "BLOCK",
+      "outcome": "CONTAINED",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    },
+    {
+      "runId": "gr003-public-04",
+      "seed": 3003,
+      "scenario": "CONFLICTING_EVIDENCE",
+      "severity": "HIGH",
+      "evidenceState": "CONFLICTING",
+      "disposition": "HUMAN_REVIEW",
+      "outcome": "ESCALATED",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    },
+    {
+      "runId": "gr003-public-05",
+      "seed": 3003,
+      "scenario": "STALE_EVIDENCE",
+      "severity": "MEDIUM",
+      "evidenceState": "STALE",
+      "disposition": "SAFE_HOLD",
+      "outcome": "CONTAINED",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    },
+    {
+      "runId": "gr003-public-06",
+      "seed": 3003,
+      "scenario": "PARTIAL_TOOL_SUCCESS",
+      "severity": "MEDIUM",
+      "evidenceState": "PARTIAL",
+      "disposition": "LIMIT",
+      "outcome": "CONTAINED",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    },
+    {
+      "runId": "gr003-public-07",
+      "seed": 3003,
+      "scenario": "UNSUPPORTED_AGENT_ANSWER",
+      "severity": "HIGH",
+      "evidenceState": "UNSUPPORTED",
+      "disposition": "BLOCK",
+      "outcome": "CONTAINED",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    },
+    {
+      "runId": "gr003-public-08",
+      "seed": 3003,
+      "scenario": "RECOVERY_AFTER_FAILURE",
+      "severity": "MEDIUM",
+      "evidenceState": "RECOVERED",
+      "disposition": "ALLOW",
+      "outcome": "SUCCESS",
+      "verification": "PASS",
+      "passed": true,
+      "externalActionExecuted": false,
+      "evidenceSource": "synthetic-public-fixture"
+    }
+  ]
+}
