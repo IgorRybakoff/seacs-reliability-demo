@@ -55,7 +55,9 @@ Artifacts:
 
 ## Demo UI
 
-Open `index.html` locally or publish it with GitHub Pages. It is static, makes no backend calls, and cannot trigger external actions.
+**Live demo:** https://igorrybakoff.github.io/seacs-reliability-demo/
+
+The page is static, makes no backend calls, and cannot trigger external actions.
 
 ## Evidence boundary
 
