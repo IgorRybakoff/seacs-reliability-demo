@@ -1,7 +1,6 @@
 # SEACS Reliability Demo — Golden Run 003
 
-Deterministic public engineering demonstration derived from validated Golden Run 003 behavior.
-
+Deterministic public fixture aligned with the Golden Run 003 scenario dispositions; this is not an independently replayed private run.
 No production telemetry, real LLM calls, Vizer internals or external actuator execution are claimed.
 
 - Frozen seed: 3003
@@ -13,17 +12,17 @@ No production telemetry, real LLM calls, Vizer internals or external actuator ex
 | Scenario | Evidence | Disposition | Outcome | Verification |
 |---|---|---|---|---|
 | NORMAL | SUFFICIENT | ALLOW | SUCCESS | PASS |
-| TOOL_TIMEOUT | MISSING | SAFE_HOLD | CONTAINED | PASS |
+| TOOL_TIMEOUT | MISSING | BLOCK | CONTAINED | PASS |
 | MALFORMED_RESPONSE | MALFORMED | BLOCK | CONTAINED | PASS |
-| CONFLICTING_EVIDENCE | CONFLICTING | HUMAN_REVIEW | ESCALATED | PASS |
-| STALE_EVIDENCE | STALE | SAFE_HOLD | CONTAINED | PASS |
-| PARTIAL_TOOL_SUCCESS | PARTIAL | LIMIT | CONTAINED | PASS |
+| CONFLICTING_EVIDENCE | CONFLICTING | BLOCK | CONTAINED | PASS |
+| STALE_EVIDENCE | STALE | BLOCK | CONTAINED | PASS |
+| PARTIAL_TOOL_SUCCESS | PARTIAL | HUMAN_REVIEW | ESCALATED | PASS |
 | UNSUPPORTED_AGENT_ANSWER | UNSUPPORTED | BLOCK | CONTAINED | PASS |
-| RECOVERY_AFTER_FAILURE | RECOVERED | ALLOW | SUCCESS | PASS |
+| RECOVERY_AFTER_FAILURE | RECOVERED | LIMIT | SUCCESS | PASS |
 
 ## Interpretation
 
-PASS means the reliability control produced the expected safe handling for that synthetic scenario. Fault scenarios may PASS through containment or escalation; PASS does not mean the underlying task succeeded.
+PASS means the reliability control produced the expected safe handling for that synthetic scenario. Fault scenarios may PASS through containment or escalation; PASS does not mean the underlying task succeeded. RECOVERY_AFTER_FAILURE reaches SUCCESS only for a supported fallback answer under LIMIT, without an external action.
 
 ## Boundary
 

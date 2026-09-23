@@ -45,6 +45,7 @@ Requires Node.js 20+.
 npm test
 npm run build
 npm run reliability:golden
+git diff --exit-code -- artifacts/golden-run-003
 ```
 
 Artifacts:
@@ -65,7 +66,19 @@ This repository is **not** the canonical SEACS implementation.
 
 It intentionally excludes private SEACS source, internal scoring formulas, Vizer integration/contracts, credentials, provider configuration, production transport, production telemetry, real LLM/API calls and external actuators.
 
-The public scenarios are synthetic deterministic engineering evidence. They demonstrate reproducibility and failure-handling semantics, not production performance.
+The public scenarios are synthetic deterministic fixtures. They mirror the Golden Run 003 scenario dispositions from the SEACS reliability harness, but are **not** a replay of the private run or evidence of production performance. No private trust scores or trace data are exported here.
+
+| Scenario | Public evidence | Disposition | Workflow outcome |
+| --- | --- | --- | --- |
+| CONFLICTING_EVIDENCE | CONFLICTING | BLOCK | CONTAINED |
+| PARTIAL_TOOL_SUCCESS | PARTIAL | HUMAN_REVIEW | ESCALATED |
+| RECOVERY_AFTER_FAILURE | RECOVERED | LIMIT | SUCCESS |
+
+`RECOVERED` requires supported fallback evidence after primary failure in the harness. Here `SUCCESS` means that the supported answer completed within the limit; it does not mean that an external action ran. The public fixture does not itself execute the private policy, so its alignment must be reviewed when that policy changes.
+
+## License
+
+Apache-2.0 applies to this public demo only. It does not grant rights to unpublished SEACS implementations or policies. See [LICENSE](LICENSE).
 
 ## Author
 

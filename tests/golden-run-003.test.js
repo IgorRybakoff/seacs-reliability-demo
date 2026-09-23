@@ -22,8 +22,30 @@ test("unsafe evidence never becomes ordinary success",()=> {
 test("recovery is explicit and verified",()=> {
   const r=runGoldenRun003().find(x=>x.scenario==="RECOVERY_AFTER_FAILURE");
   assert.equal(r.evidenceState,"RECOVERED");
+  assert.equal(r.disposition,"LIMIT");
   assert.equal(r.outcome,"SUCCESS");
   assert.equal(r.verification,"PASS");
+});
+
+test("fault dispositions match the Golden Run 003 policy outcomes",()=> {
+  const cases={
+    TOOL_TIMEOUT:["BLOCK","CONTAINED"],
+    CONFLICTING_EVIDENCE:["BLOCK","CONTAINED"],
+    STALE_EVIDENCE:["BLOCK","CONTAINED"],
+    PARTIAL_TOOL_SUCCESS:["HUMAN_REVIEW","ESCALATED"],
+    RECOVERY_AFTER_FAILURE:["LIMIT","SUCCESS"]
+  };
+  for(const r of runGoldenRun003().filter(x=>x.scenario in cases)) {
+    assert.deepEqual([r.disposition,r.outcome],cases[r.scenario]);
+    assert.equal(r.externalActionExecuted,false);
+  }
+});
+
+test("static demo displays exactly the frozen public fixture",async()=> {
+  const html=await readFile(new URL("../index.html",import.meta.url),"utf8");
+  const match=html.match(/const data=(\[[^;]+\]);/);
+  assert.ok(match,"static data array is present");
+  assert.deepEqual(JSON.parse(match[1]),runGoldenRun003());
 });
 
 test("artifacts are byte-stable",async()=> {

@@ -14,4 +14,6 @@ Public invariants:
 - recovery is explicit as RECOVERED
 - artifacts are deterministic UTF-8 text
 
+The fixtures represent expected public scenario dispositions, not a replay of the private controller. In the Golden Run 003 harness, conflicting evidence is BLOCK / CONTAINED; partial tool success is HUMAN_REVIEW / ESCALATED; supported fallback recovery is LIMIT / SUCCESS. SUCCESS refers to the supported answer and no external action is executed.
+
 Private implementation, scoring formulas and Vizer integration are intentionally excluded.
