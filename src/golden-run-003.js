@@ -3,13 +3,13 @@ import { mkdir, writeFile } from "node:fs/promises";
 export const SEED = 3003;
 export const SCENARIOS = [
   {scenario:"NORMAL",severity:"INFO",evidenceState:"SUFFICIENT",disposition:"ALLOW",outcome:"SUCCESS",verification:"PASS",passed:true},
-  {scenario:"TOOL_TIMEOUT",severity:"HIGH",evidenceState:"MISSING",disposition:"SAFE_HOLD",outcome:"CONTAINED",verification:"PASS",passed:true},
-  {scenario:"MALFORMED_RESPONSE",severity:"HIGH",evidenceState:"MALFORMED",disposition:"BLOCK",outcome:"CONTAINED",verification:"PASS",passed:true},
-  {scenario:"CONFLICTING_EVIDENCE",severity:"HIGH",evidenceState:"CONFLICTING",disposition:"HUMAN_REVIEW",outcome:"ESCALATED",verification:"PASS",passed:true},
-  {scenario:"STALE_EVIDENCE",severity:"MEDIUM",evidenceState:"STALE",disposition:"SAFE_HOLD",outcome:"CONTAINED",verification:"PASS",passed:true},
-  {scenario:"PARTIAL_TOOL_SUCCESS",severity:"MEDIUM",evidenceState:"PARTIAL",disposition:"LIMIT",outcome:"CONTAINED",verification:"PASS",passed:true},
-  {scenario:"UNSUPPORTED_AGENT_ANSWER",severity:"HIGH",evidenceState:"UNSUPPORTED",disposition:"BLOCK",outcome:"CONTAINED",verification:"PASS",passed:true},
-  {scenario:"RECOVERY_AFTER_FAILURE",severity:"MEDIUM",evidenceState:"RECOVERED",disposition:"ALLOW",outcome:"SUCCESS",verification:"PASS",passed:true}
+  {scenario:"TOOL_TIMEOUT",severity:"HIGH",evidenceState:"MISSING",disposition:"BLOCK",outcome:"CONTAINED",verification:"PASS",passed:true},
+  {scenario:"MALFORMED_RESPONSE",severity:"MEDIUM",evidenceState:"MALFORMED",disposition:"BLOCK",outcome:"CONTAINED",verification:"PASS",passed:true},
+  {scenario:"CONFLICTING_EVIDENCE",severity:"MEDIUM",evidenceState:"CONFLICTING",disposition:"BLOCK",outcome:"CONTAINED",verification:"PASS",passed:true},
+  {scenario:"STALE_EVIDENCE",severity:"MEDIUM",evidenceState:"STALE",disposition:"BLOCK",outcome:"CONTAINED",verification:"PASS",passed:true},
+  {scenario:"PARTIAL_TOOL_SUCCESS",severity:"HIGH",evidenceState:"PARTIAL",disposition:"HUMAN_REVIEW",outcome:"ESCALATED",verification:"PASS",passed:true},
+  {scenario:"UNSUPPORTED_AGENT_ANSWER",severity:"MEDIUM",evidenceState:"UNSUPPORTED",disposition:"BLOCK",outcome:"CONTAINED",verification:"PASS",passed:true},
+  {scenario:"RECOVERY_AFTER_FAILURE",severity:"LOW",evidenceState:"RECOVERED",disposition:"LIMIT",outcome:"SUCCESS",verification:"PASS",passed:true}
 ];
 
 export function runGoldenRun003(seed = SEED) {
@@ -52,7 +52,7 @@ export async function writeArtifacts(output="artifacts/golden-run-003") {
   const report=[
     "# SEACS Reliability Demo — Golden Run 003",
     "",
-    "Deterministic public engineering demonstration derived from validated Golden Run 003 behavior.",
+    "Deterministic public fixture aligned with the Golden Run 003 scenario dispositions; this is not an independently replayed private run.",
     "No production telemetry, real LLM calls, Vizer internals or external actuator execution are claimed.",
     "",
     `- Frozen seed: ${SEED}`,
@@ -67,7 +67,7 @@ export async function writeArtifacts(output="artifacts/golden-run-003") {
     "",
     "## Interpretation",
     "",
-    "PASS means the reliability control produced the expected safe handling for that synthetic scenario. Fault scenarios may PASS through containment or escalation; PASS does not mean the underlying task succeeded.",
+    "PASS means the reliability control produced the expected safe handling for that synthetic scenario. Fault scenarios may PASS through containment or escalation; PASS does not mean the underlying task succeeded. RECOVERY_AFTER_FAILURE reaches SUCCESS only for a supported fallback answer under LIMIT, without an external action.",
     "",
     "## Boundary",
     "",

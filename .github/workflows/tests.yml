@@ -11,3 +11,4 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run reliability:golden
+      - run: git diff --exit-code -- artifacts/golden-run-003
